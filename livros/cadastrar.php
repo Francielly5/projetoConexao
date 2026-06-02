@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $titulo = trim($_POST['titulo']);
     $autor = trim($_POST['autor']);
     $disponivel = isset($_POST['disponivel']) ? 1 : 0;
-    $image = null;
+    $imagem = null;
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === 0) {
         if (!is_dir('../Imagens')) {
 
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
         $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
         $nomeArquivo = uniqid().".".$extensao;
-        $caminho = "../Imagens".$nomeArquivo;
+        $caminho = "../Imagens/".$nomeArquivo;
         if(move_uploaded_file($_FILES['imagem']['tmp_name'],$caminho)){
             $imagem = $nomeArquivo;
         }else{
@@ -47,10 +47,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Livro</title>
-    <link rel="stylesheet" href="../style.css">
-</head>
-
-<body>
+<link rel="stylesheet" href="/projetoConexao/style.css">
 
     <div class="container">
         <h1>Cadastrar Livro</h1>

@@ -11,9 +11,7 @@ $usuarios = $smtp->fetchAll(PDO::FETCH_ASSOC);
 <head>
 <meta charset="UTF-8">
 <title>Lista de Usuários</title>
-<link rel="stylesheet" href="../style.css">
- 
- 
+<link rel="stylesheet" href="/projetoConexao/style.css">
 </head>
 <body>
  

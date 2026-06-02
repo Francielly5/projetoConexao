@@ -9,19 +9,19 @@ $tipo = $_POST["tipo"];
 
 
 try{
-$sql = "INSERT INTO usuarios (nome, email, senha, tipo) VALUES (:nome, :email, :senha, :tipo)";
-$smtp = $pdo->prepare($sql);
-$stmp->execute([
-    ":nome" => $nome,
-    ":email" => $email,
-    ":senha" => $senha,
-    ":tipo" => $tipo
-]);
-header("Location:../painel.php");
-exit;
+    $sql = "INSERT INTO usuarios (nome, email, senha, tipo) VALUES (:nome, :email, :senha, :tipo)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ":nome" => $nome,
+        ":email" => $email,
+        ":senha" => $senha,
+        ":tipo" => $tipo
+    ]);
+    header("Location:../painel.php");
+    exit;
 }
 catch(PDOException $e){
-    $mensagem="<p class='erro'>Erro ao cadastrar:".$e->getMessage()."</p>";
+    $mensagem="<p class='erro'>Erro ao cadastrar: " . htmlspecialchars($e->getMessage()) . "</p>";
  }
 }
 ?>
@@ -32,7 +32,7 @@ catch(PDOException $e){
 <head>
 <meta charset="UTF-8">
 <title>Cadastrar Usuário</title>
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="/projetoConexao/style.css">
 </head>
 <body>
 <div class="container">

@@ -15,7 +15,7 @@ if (!isset($_SESSION['usuario'])) {
 <head>
 <meta charset="UTF-8">
 <title>Painel</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/projetoConexao/style.css">
 </head>
 <body>
 
