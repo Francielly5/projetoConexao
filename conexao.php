@@ -15,10 +15,16 @@ try {
     // Cria uma conexão com o banco usando PDO
     // "mysql:host=$host;dbname=$banco;charset=utf8" informa onde está o banco e qual banco usar
     // $usuario e $senha são usados como login do banco
-    $pdo = new PDO("mysql:host=$host;dbname=$banco;charset=utf8", $usuario, $senha);
-
-    // Define que, se acontecer algum erro na conexão ou nas consultas, o PDO vai mostrar uma mensagem de erro
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$banco;charset=utf8",
+        $usuario,
+        $senha,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_AUTOCOMMIT => true,
+        ]
+    );
 
 } catch (PDOException $e) {
 
